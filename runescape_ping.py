@@ -51,7 +51,10 @@ def pingWorld():
         ping_list = []
         
         for i in range(0, len(res)):
-            ping_list.append(float(str(res[i]).split(' ')[-1].split('ms')[0]))
+            try:
+                ping_list.append(float(str(res[i]).split(' ')[-1].split('ms')[0]))
+            except ValueError:
+                continue
 
         print("World " + str(world_number) + ": " +
               str(int(mean(ping_list))) + "ms")
